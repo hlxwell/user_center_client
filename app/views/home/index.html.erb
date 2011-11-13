@@ -12,8 +12,12 @@
     <%= f.password_field :password %>
   </p>
   <p>
+    <%= f.label :remember %>
+    <%= f.check_box :remember %>
+  </p>
+  <p>
     <%= f.hidden_field :lt %>
-    <%= f.submit "Login" %>
+    <%= f.submit "Login" %><img id="loading" src="loading.gif" style="display:none"/>
   </p>
 <% end %>
 
@@ -22,7 +26,7 @@
     // get and set login ticket
     $("#login_form #login_email").blur(function(){
       // check if it's correct email
-      if ($(this).val().length) {
+      if ($(this).val().length > 0 && $("#login_lt").val().length == 0) {
         FlyJSONP.get({
           url: '<%= File.join(cas_base_url, "get_login_ticket.json") %>',
           success: function (data) {
@@ -35,13 +39,32 @@
       };
     })
 
+    // get service ticket
     $("#login_form").submit(function(){
       if ($("#login_lt").val().length == 0 ) {
-        alert("doesn't get login ticket")
-        return false;
+        alert("doesn't get login ticket, please re-input the login form")
+      } else {
+        FlyJSONP.get({
+          url: '<%= File.join(cas_base_url, "get_service_ticket.json") %>',
+          parameters: {
+            email: $("#login_email").val(),
+            password: $("#login_password").val(),
+            remember: $("#login_remember").val(),
+            lt: $("#login_lt").val(),
+          },
+          success: function (data) {
+            if (data.sts !== null) {
+              location.href = "<%= login_url %>?back_url=/&sts=" + data.sts.join(",")
+            } else {
+              console.log("not get service ticket")
+            }
+          },
+          error: function (errorMsg) {
+            console.log(errorMsg);
+          }
+        });
       }
 
-      $.get('<%= cas_base_url %>', $("#login_form").serialize())
       return false
     })
   })
