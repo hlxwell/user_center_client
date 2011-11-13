@@ -1,0 +1,48 @@
+<h1>Home</h1>
+<%= link_to "Privacy", privacy_path %>
+<%= link_to("Logout user##{session[:cas_user]}", logout_path) if session[:cas_user].present? %>
+
+<%= form_for :login, :remote => true, :html => { :id => "login_form" } do |f| %>
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.hidden_field :lt %>
+    <%= f.submit "Login" %>
+  </p>
+<% end %>
+
+<script>
+  $(function(){
+    // get and set login ticket
+    $("#login_form #login_email").blur(function(){
+      // check if it's correct email
+      if ($(this).val().length) {
+        FlyJSONP.get({
+          url: '<%= File.join(cas_base_url, "get_login_ticket.json") %>',
+          success: function (data) {
+            $("#login_lt").val(data.lt)
+          },
+          error: function (errorMsg) {
+            console.log(errorMsg);
+          }
+        });
+      };
+    })
+
+    $("#login_form").submit(function(){
+      if ($("#login_lt").val().length == 0 ) {
+        alert("doesn't get login ticket")
+        return false;
+      }
+
+      $.get('<%= cas_base_url %>', $("#login_form").serialize())
+      return false
+    })
+  })
+</script>
