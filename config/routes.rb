@@ -1,5 +1,6 @@
 UserCenterClient::Application.routes.draw do
 
+  get "/login" => "home#login", :as => :login
   get "/logout" => "home#logout", :as => :logout
   get "/privacy" => "home#privacy", :as => :privacy
 
