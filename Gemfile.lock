@@ -1,3 +1,8 @@
+PATH
+  remote: lib/rubycas_ajax_client
+  specs:
+    rubycas_ajax_client (0.0.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -114,6 +119,7 @@ DEPENDENCIES
   json
   rails (= 3.1.1)
   rubycas-client
+  rubycas_ajax_client!
   sass-rails (~> 3.1.4)
   sqlite3
   uglifier (>= 1.0.3)

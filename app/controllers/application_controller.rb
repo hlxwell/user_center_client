@@ -14,9 +14,4 @@ class ApplicationController < ActionController::Base
   # @username = session[:cas_user]
   # CASClient::Frameworks::Rails::Filter.logout(self)
   # @login_url = CASClient::Frameworks::Rails::Filter.login_url(self)
-  
-  def cas_base_url
-    CASClient::Frameworks::Rails::Filter.config[:cas_base_url]
-  end
-  helper_method :cas_base_url
 end
