@@ -1,0 +1,45 @@
+$(function(){
+  // get and set login ticket
+  $("#login_form #login_email").blur(function(){
+    // check if it's correct email
+    if ($(this).val().length > 0 && $("#login_lt").val().length == 0) {
+      FlyJSONP.get({
+        url: '<%= File.join(CASClient::Frameworks::Rails::Filter.config[:cas_base_url], "get_login_ticket.json") %>',
+        success: function (data) {
+          $("#login_lt").val(data.lt)
+        },
+        error: function (errorMsg) {
+          console.log(errorMsg)
+        }
+      });
+    };
+  })
+
+  // get service ticket
+  $("#login_form").submit(function(){
+    if ($("#login_lt").val().length == 0 ) {
+      alert("doesn't get login ticket, please re-input the login form")
+    } else {
+      FlyJSONP.get({
+        url: '<%= File.join(CASClient::Frameworks::Rails::Filter.config[:cas_base_url], "get_service_ticket.json") %>',
+        parameters: {
+          email: $("#login_email").val(),
+          password: $("#login_password").val(),
+          remember: $("#login_remember").val(),
+          lt: $("#login_lt").val(),
+        },
+        success: function (data) {
+          if (data.sts !== null) {
+            location.href = "/login?back_url=/&sts=" + data.sts.join(",")
+          } else {
+            console.log("not get service ticket")
+          }
+        },
+        error: function (errorMsg) {
+          console.log(errorMsg)
+        }
+      })
+    }
+    return false
+  })
+})
