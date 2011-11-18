@@ -7,4 +7,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require flyjsonp
+//= require rubycas_session
 //= require_tree .
