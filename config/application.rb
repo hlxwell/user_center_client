@@ -54,10 +54,10 @@ cas_logger = CASClient::Logger.new(File.join(Rails.root, 'log', 'cas.log'))
 cas_logger.level = Logger::DEBUG
 
 CASClient::Frameworks::Rails::Filter.configure(
-  :cas_base_url  => "http://cas.lvh.me:3000/",
-  :login_url     => "http://cas.lvh.me:3000/login",
-  :logout_url    => "http://cas.lvh.me:3000/logout",
-  :validate_url  => "http://cas.lvh.me:3000/serviceValidate",
+  :cas_base_url  => "http://cas.sso.theplant-dev.com/",
+  :login_url     => "http://cas.sso.theplant-dev.com/login",
+  :logout_url    => "http://cas.sso.theplant-dev.com/logout",
+  :validate_url  => "http://cas.sso.theplant-dev.com/serviceValidate",
   :username_session_key => :cas_user,
   :extra_attributes_session_key => :cas_extra_attributes,
   :logger => cas_logger,

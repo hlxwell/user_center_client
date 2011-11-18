@@ -38,7 +38,7 @@ namespace :deploy do
     # run "cd #{release_path}; ln -s #{shared_path}/database.yml #{release_path}/config/database.yml"
     # run "cd #{release_path}; bundle install"
     # run "cd #{release_path}; bundle exec rake db:migrate RAILS_ENV=production"
-    run "cd #{release_path}; bundle exec rake assets:precompile RAILS_ENV=production"
+    # run "cd #{release_path}; bundle exec rake assets:precompile RAILS_ENV=production"
   end
 end
 after "deploy:symlink", "deploy:init_project"
