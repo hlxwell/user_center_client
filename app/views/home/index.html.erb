@@ -1,10 +1,4 @@
 <h1>Home</h1>
 <p>
   <%= link_to "Privacy", privacy_path %>
-  <%= link_to("Logout user##{session[:cas_user]}", logout_path) if session[:cas_user].present? %>
 </p>
-
-<div>
-  <h2>Login Form</h2>
-  <div><%= render :partial => "rubycas_session/form" %></div>
-</div>

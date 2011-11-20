@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>UserCenterClient</title>
+  <title>ASICS</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <% if current_user %>
+    Current User: <%= current_user %>
+    <%= link_to("Logout", logout_path) %>
+  <% else %>
+    <%#= link_to("Login", "#{CASClient::Frameworks::Rails::Filter.config[:login_url]}?service=#{request.url}") %>
+    <div><%= render :partial => "rubycas_session/form" %></div>
+  <% end %>
+
+  <%= yield %>
 
 </body>
 </html>
