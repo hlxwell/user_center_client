@@ -5,10 +5,26 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <script src="http://www.asics.co.uk/feeds/clean_header_footer.js" type="text/javascript"></script>
 </head>
 <body>
+<!-- <div id="holder"> -->
+  
+  <div id="top">
+    <div id="top_container" class="clearfix">
+      <ul id="navigation">
+        <li><a href="#" >Register</a></li>
+        <li class="vr_top"></li>
+        <li><a href="#" >Login</a></li>
+      </ul>
+    </div>
+  </div>
 
 <%= yield %>
 
+<!-- </div> -->
+<script type="text/javascript">
+  if (typeof minisite !== "undefined") minisite.write('footer');
+</script>
 </body>
 </html>
