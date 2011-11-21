@@ -1,16 +1,14 @@
 $(function(){
   function get_login_ticket() {
-    // if ($("#login_lt").val().length == 0) {
-      FlyJSONP.get({
-        url: '<%= File.join(CASClient::Frameworks::Rails::Filter.config[:cas_base_url], "get_login_ticket.json") %>',
-        success: function (data) {
-          $("#login_lt").val(data.lt)
-        },
-        error: function (errorMsg) {
-          console.log(errorMsg)
-        }
-      })
-    // }
+    FlyJSONP.get({
+      url: '<%= File.join(CASClient::Frameworks::Rails::Filter.config[:cas_base_url], "get_login_ticket.json") %>',
+      success: function (data) {
+        $("#login_lt").val(data.lt)
+      },
+      error: function (errorMsg) {
+        console.log(errorMsg)
+      }
+    })
   }
 
   get_login_ticket()
