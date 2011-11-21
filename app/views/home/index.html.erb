@@ -1,4 +1,13 @@
-<h1>Home</h1>
-<p>
-  <%= link_to "Privacy", privacy_path %>
-</p>
+<div id="wrapper">
+  <header id="header">
+    <h1><a href="#" id="logo">MY ASICS</a></h1>
+  </header>
+  <section id="main">
+    <h2>Welcome to My ASICS</h2>
+    <article class="form_login">
+      <%= link_to "Privacy", privacy_path %>
+      <%= link_to("Logout user##{session[:cas_user]}", logout_path) if session[:cas_user].present? %>
+      <%= render :partial => "rubycas_session/form" %>
+    </article>
+  </section>
+</div>
