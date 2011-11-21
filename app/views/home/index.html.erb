@@ -5,9 +5,10 @@
   <section id="main">
     <h2>Welcome to My ASICS</h2>
     <article class="form_login">
-      <%= link_to "Privacy", privacy_path %>
-      <%= link_to("Logout user##{session[:cas_user]}", logout_path) if session[:cas_user].present? %>
-      <%= render :partial => "rubycas_session/form" %>
+      <h2><%= link_to "Private Page", privacy_path %></h2>
+      <% unless current_user %>
+        <%= render :partial => "rubycas_session/form" %>
+      <% end %>
     </article>
   </section>
 </div>
