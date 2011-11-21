@@ -35,6 +35,7 @@ namespace :deploy do
   end
 
   task :init_project do
+    run "cd #{release_path}; mkdir -p tmp/sessions tmp/sockets tmp/pids"
     # run "cd #{release_path}; ln -s #{shared_path}/database.yml #{release_path}/config/database.yml"
     # run "cd #{release_path}; bundle install"
     # run "cd #{release_path}; bundle exec rake db:migrate RAILS_ENV=production"
