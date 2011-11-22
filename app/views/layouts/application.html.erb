@@ -13,17 +13,16 @@
     <div id="top_container" class="clearfix">
       <% if current_user %>
         <ul id="navigation">
-          <li><a href="#" ><%= current_user %></a></li>
+          <li><a href="/" ><%= current_user %></a></li>
           <li class="vr_top"></li>
           <li><%= link_to("Logout", logout_path) %></li>
         </ul>
       <% else %>
         <ul id="navigation">
-          <li><a href="#" >Register</a></li>
+          <li><%= link_to("Register", "#{CASClient::Frameworks::Rails::Filter.config[:cas_base_url]}user/new?service=#{request.url}") %></li>
           <li class="vr_top"></li>
-          <li><a href="#" >Login</a></li>
+          <li><%= link_to("Login", "#{CASClient::Frameworks::Rails::Filter.config[:login_url]}?service=#{request.url}") %></li>
         </ul>
-        <%#= link_to("Login", "#{CASClient::Frameworks::Rails::Filter.config[:login_url]}?service=#{request.url}") %>
       <% end %>
     </div>
   </div>
