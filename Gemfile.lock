@@ -1,7 +1,11 @@
-PATH
-  remote: lib/rubycas_ajax_client
+GIT
+  remote: git@github.com:theplant/rubycas-ajax-client.git
+  revision: d88cfd6a95de9c4a3f5b72eb2298e1da7a807078
   specs:
-    rubycas_ajax_client (0.0.1)
+    rubycas_ajax_client (0.1.0)
+      jquery-rails
+      rails
+      rubycas-client
 
 GEM
   remote: http://rubygems.org/
@@ -36,7 +40,7 @@ GEM
       multi_json (~> 1.0)
     arel (2.2.1)
     builder (3.0.0)
-    capistrano (2.8.0)
+    capistrano (2.9.0)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -52,24 +56,24 @@ GEM
     erubis (2.7.0)
     execjs (1.2.9)
       multi_json (~> 1.0)
-    highline (1.6.2)
+    highline (1.6.8)
     hike (1.2.1)
     i18n (0.6.0)
-    jquery-rails (1.0.17)
+    jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
-    json (1.6.1)
+    json (1.6.2)
     mail (2.3.0)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
-    multi_json (1.0.3)
+    multi_json (1.0.4)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
-    net-ssh (2.1.4)
+    net-ssh (2.2.1)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     polyglot (0.3.3)
@@ -100,19 +104,18 @@ GEM
     rake (0.9.2.2)
     rdoc (3.11)
       json (~> 1.4)
-    rubycas-client (2.3.1)
+    rubycas-client (2.3.7)
       activesupport
-    sass (3.1.10)
-    sass-rails (3.1.4)
+    sass (3.1.11)
+    sass-rails (3.1.5)
       actionpack (~> 3.1.0)
       railties (~> 3.1.0)
-      sass (>= 3.1.4)
-      sprockets (~> 2.0.0)
+      sass (~> 3.1.10)
       tilt (~> 1.3.2)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
-      tilt (!= 1.3.0, ~> 1.1)
+      tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.4)
     thor (0.14.6)
     tilt (1.3.3)
@@ -120,7 +123,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.31)
-    uglifier (1.0.4)
+    uglifier (1.1.0)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
 
@@ -133,7 +136,6 @@ DEPENDENCIES
   jquery-rails
   json
   rails (= 3.1.1)
-  rubycas-client
   rubycas_ajax_client!
   sass-rails (~> 3.1.4)
   sqlite3

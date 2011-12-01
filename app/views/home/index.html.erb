@@ -7,7 +7,7 @@
     <article class="form_login">
       <h2><%= link_to "Private Page", privacy_path %></h2>
       <% unless current_user %>
-        <%= render :partial => "rubycas_session/form" %>
+        <%= render_ajax_login_form %>
       <% end %>
     </article>
   </section>

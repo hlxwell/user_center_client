@@ -28,17 +28,3 @@ UserCenterClient::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 end
-
-cas_logger = CASClient::Logger.new(File.join(Rails.root, 'log', 'cas.log'))
-cas_logger.level = Logger::DEBUG
-
-CASClient::Frameworks::Rails::Filter.configure(
-  :cas_base_url  => "http://cas.lvh.me:3000/",
-  :login_url     => "http://cas.lvh.me:3000/login",
-  :logout_url    => "http://cas.lvh.me:3000/logout",
-  :validate_url  => "http://cas.lvh.me:3000/serviceValidate",
-  :username_session_key => :cas_user,
-  :extra_attributes_session_key => :cas_extra_attributes,
-  :logger => cas_logger,
-  :enable_single_sign_out => true
-)
